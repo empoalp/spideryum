@@ -1,5 +1,11 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  h1= path
+  a(href='/upload?type=static') Upload file
+  ul
+    li 
+      a(href=path) ..
+    - each file in files
+      li  
+        a(href=path+'/'+file)= file
