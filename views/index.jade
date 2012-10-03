@@ -2,7 +2,7 @@ extends layout
 
 block content
   h1= path
-  a(href='/upload?type=static') Upload file
+  a(href='/upload?path=' + path + '&type=static') Upload file
   ul
     li 
       a(href=path) ..

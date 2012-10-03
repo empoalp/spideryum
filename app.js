@@ -24,6 +24,7 @@ app.configure(function(){
   app.use(app.router);
   app.use(express.static(spideryumPath));
   app.use(express.static(path.join(__dirname, 'public')));
+  app.use(express.bodyParser({ keepExtensions: true, uploadDir: '/tmp' }));
 });
 
 app.configure('development', function(){
@@ -56,7 +57,17 @@ app.get(/^\/(.*)/, function(req, res, next){
 });
 
 app.get('/upload', function(req, res) {
-  res.render('upload');
+  res.render('upload', { path: req.query.path });
+});
+
+app.post('/upload', function(req, res, next) {
+  fs.readFile(req.files.file.path, function (err, data) {
+    var filePath = path.join(spideryumPath, req.query.path) + '/' + req.files.file.name;
+    console.log(filePath);
+    fs.writeFile(filePath, data, function(err) {
+      res.redirect(req.query.path);
+    });
+  });
 });
 
 http.createServer(app).listen(app.get('port'), function(){

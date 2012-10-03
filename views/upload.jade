@@ -2,4 +2,6 @@ extends layout
 
 block content
   h1 Upload file
-  input(type='file')
+  form(method='post', enctype='multipart/form-data', action='/upload?path=' + path) 
+    input(type='file', name='file')
+    input(type='submit', value='Upload')
