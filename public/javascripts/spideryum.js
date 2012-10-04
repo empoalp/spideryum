@@ -29,6 +29,12 @@ $(function() {
     });
 
   }, false);
+
+  $('#file-table a').on('dragstart', function(e) {
+    var dt = e.originalEvent.dataTransfer;
+    var downUrl = 'application/octet-stream:' + $(this).html() + ':http://localhost:3000' + $(this).attr('href');
+    dt.setData("DownloadURL", downUrl); 
+  });
 });
 
 })();

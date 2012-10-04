@@ -10,7 +10,7 @@ block content
     - each file, i in files
       tr  
         td
-          a(href=path+'/'+file.name, tabindex=i)= file.name
+          a(href=path+'/'+file.name, draggable='true')= file.name
         td
           form(method='post', action=path+'/'+file.name)
             input(type='hidden', name='_method', value='delete')
