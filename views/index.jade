@@ -3,9 +3,15 @@ extends layout
 block content
   h1= path
   a(href='/upload?path=' + path + '&type=static') Upload file
-  ul
-    li 
-      a(href=path) ..
-    - each file in files
-      li  
-        a(href=path+'/'+file)= file
+  table#file-table
+    tr 
+      td
+        a(href=path) ..
+    - each file, i in files
+      tr  
+        td
+          a(href=path+'/'+file, tabindex=i)= file.name
+        td
+          form(method='post', action=path+'/'+file.name)
+            input(type='hidden', name='_method', value='delete')
+            input(type='submit', tabindex=i*30, value='Delete')

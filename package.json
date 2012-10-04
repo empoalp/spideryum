@@ -7,6 +7,9 @@
   },
   "dependencies": {
     "express": "3.0.0rc4",
-    "jade": "*"
+    "jade": "*",
+    "formidable": "1.0.11",
+    "step": "*",
+    "socket.io": "*"
   }
 }
