@@ -5,8 +5,6 @@
 
 var express = require('express')
   , fs = require('fs')
-  , routes = require('./routes')
-  , user = require('./routes/user')
   , http = require('http')
   , spideryumPath = process.env.SPIDERYUM_PATH
   , path = require('path');
